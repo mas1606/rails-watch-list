@@ -1,11 +1,11 @@
 
 
-<p><%= cl_image_tag @list.photo.key, width: 70, crop: :fill if @list.photo.attached?%> <%= @list.name %> <%= cl_image_tag @list.photo.key, width: 70, crop: :fill if @list.photo.attached?%></p>
+<p style="text-align:center"><%= cl_image_tag @list.photo.key, width: 70, crop: :fill if @list.photo.attached?%> <%= @list.name %> <%= cl_image_tag @list.photo.key, width: 70, crop: :fill if @list.photo.attached?%></p>
 <div class = "row h6 small">
   <% @list.bookmarks.each do |bookmark| %>
-    <div class = "col-2 border border-primary"> 
+    <div class = "col-3 border border-primary"> 
       <p">Title: <%= bookmark.movie.title %></p> 
-      <p style="text-align:center"><%=image_tag bookmark.movie.poster_url, width: 80 %></p> 
+      <p style="text-align:center"><%=image_tag bookmark.movie.poster_url, width: 150 %></p> 
       <p> Rating: <%= bookmark.movie.rating %></p>
       <p><div class="border">
         Comment: <%= bookmark.comment %>
