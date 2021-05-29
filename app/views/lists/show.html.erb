@@ -1,10 +1,12 @@
 <h1>Show one list content</h1>
 
 <p>List name: <%= @list.name %></p>
-
+<p><%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill if @list.photo.attached?%></p>
 <% @list.bookmarks.each do |bookmark| %>
   <div>
-    <p>Title: <%= bookmark.movie.title %> | URL: <%= bookmark.movie.poster_url %> | Rating: <%= bookmark.movie.rating %></p>
+    <p>Title: <%= bookmark.movie.title %></p> 
+    <p><%=image_tag bookmark.movie.poster_url, height: 200 %></p> 
+    <p> Rating: <%= bookmark.movie.rating %></p>
     <p>Comment: <%= bookmark.comment %></p>
     <div>
       <%= link_to "delete", bookmark_path(bookmark), method: :delete, data: { confirm: 'are you sure??'} %>
