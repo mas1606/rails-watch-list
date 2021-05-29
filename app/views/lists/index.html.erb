@@ -12,9 +12,17 @@
       <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path list.photo.key if list.photo.attached? %>);">
         <%= list.name %>
       </div>
-    <%= link_to 'Show', list_path(list) %></td>
-    <%= link_to 'Edit', edit_list_path(list) %></td>
-    <%= link_to 'Destroy', list, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+     <p style="text-align:right"">
+        <%= link_to list_path(list) do%>
+          <i class="fas fa-eye"></i>
+        <% end %>
+        <%= link_to edit_list_path(list) do %>
+          <i class="fas fa-edit"></i>
+        <% end %>
+        <%= link_to list, method: :delete, data: { confirm: 'Are you sure?' } do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </p>
     </div>
 <% end %>
 </div>

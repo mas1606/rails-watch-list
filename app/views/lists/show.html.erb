@@ -1,16 +1,20 @@
 
-<p>List name: <%= @list.name %></p>
-<p><%= cl_image_tag @list.photo.key, height: 250, crop: :fill if @list.photo.attached?%></p>
-<div class = "row">
+
+<p><%= cl_image_tag @list.photo.key, width: 70, crop: :fill if @list.photo.attached?%> <%= @list.name %> <%= cl_image_tag @list.photo.key, width: 70, crop: :fill if @list.photo.attached?%></p>
+<div class = "row h6 small">
   <% @list.bookmarks.each do |bookmark| %>
-    <div class = "col-3 border border-primary"> 
+    <div class = "col-2 border border-primary"> 
       <p">Title: <%= bookmark.movie.title %></p> 
-      <p style="text-align:center"><%=image_tag bookmark.movie.poster_url, height: 150 %></p> 
+      <p style="text-align:center"><%=image_tag bookmark.movie.poster_url, width: 80 %></p> 
       <p> Rating: <%= bookmark.movie.rating %></p>
-      <p><div class="border h6">
+      <p><div class="border">
         Comment: <%= bookmark.comment %>
       </div></p>
-        <%= link_to "delete", bookmark_path(bookmark), method: :delete, data: { confirm: 'are you sure??'} %>
+      <p style="text-align:right">
+        <%= link_to bookmark_path(bookmark), method: :delete, data: { confirm: 'are you sure??'} do %>
+          <i class="fas fa-trash-alt"></i>
+        <% end %>
+      </p>
     </div>
   <% end %>
 </div>
