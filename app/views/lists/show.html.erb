@@ -1,0 +1,27 @@
+<h1>Show one list content</h1>
+
+<p>List name: <%= @list.name %></p>
+
+<% @list.bookmarks.each do |bookmark| %>
+  <div>
+    <p>Title: <%= bookmark.movie.title %> | URL: <%= bookmark.movie.poster_url %> | Rating: <%= bookmark.movie.rating %></p>
+    <p>Comment: <%= bookmark.comment %></p>
+    <div>
+      <%= link_to "delete", bookmark_path(bookmark), method: :delete, data: { confirm: 'are you sure??'} %>
+    </div>
+  </div>
+<% end %>
+<%#= link_to 'Add a new bookmark', new_list_bookmark_path(@list)  %>
+
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <div class="form-inputs">
+    <%= f.association :movie, collection: Movie.all %>
+    <%= f.input :comment %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
+
+<p><%= link_to 'Back', root_path %></p>
