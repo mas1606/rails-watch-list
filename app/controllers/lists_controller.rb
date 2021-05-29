@@ -8,7 +8,6 @@ class ListsController < ApplicationController
     @list = List.find(params[:id])
     @bookmarks = @list.bookmarks
     @bookmark = Bookmark.new
-
   end
 
   def new

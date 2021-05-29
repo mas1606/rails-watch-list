@@ -1,18 +1,19 @@
-<h1>Show one list content</h1>
 
 <p>List name: <%= @list.name %></p>
-<p><%= cl_image_tag @list.photo.key, height: 300, width: 400, crop: :fill if @list.photo.attached?%></p>
-<% @list.bookmarks.each do |bookmark| %>
-  <div>
-    <p>Title: <%= bookmark.movie.title %></p> 
-    <p><%=image_tag bookmark.movie.poster_url, height: 200 %></p> 
-    <p> Rating: <%= bookmark.movie.rating %></p>
-    <p>Comment: <%= bookmark.comment %></p>
-    <div>
-      <%= link_to "delete", bookmark_path(bookmark), method: :delete, data: { confirm: 'are you sure??'} %>
+<p><%= cl_image_tag @list.photo.key, height: 250, crop: :fill if @list.photo.attached?%></p>
+<div class = "row">
+  <% @list.bookmarks.each do |bookmark| %>
+    <div class = "col-3 border border-primary"> 
+      <p">Title: <%= bookmark.movie.title %></p> 
+      <p style="text-align:center"><%=image_tag bookmark.movie.poster_url, height: 150 %></p> 
+      <p> Rating: <%= bookmark.movie.rating %></p>
+      <p><div class="border h6">
+        Comment: <%= bookmark.comment %>
+      </div></p>
+        <%= link_to "delete", bookmark_path(bookmark), method: :delete, data: { confirm: 'are you sure??'} %>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>
 <%#= link_to 'Add a new bookmark', new_list_bookmark_path(@list)  %>
 
 <%= simple_form_for [@list, @bookmark] do |f| %>
